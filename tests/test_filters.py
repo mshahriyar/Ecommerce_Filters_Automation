@@ -21,15 +21,18 @@ def test_filters(page, cars_page):
     selected_regions = region_filter.apply(["American", "GCC"])
     year_range = year_filter.apply(2014, 2022)
     km_range = km_filter.apply(5000, 100000)
-    # emirates_filter.apply()
+    emirates_filter.apply()
     cars_page.wait_for_timeout(2000)   # allow UI filters to settle
+
+    # fascination_flow = fascination.auto_fascination_flow()
+    # print("\n🔎 Fascination Flow Selected:", fascination_flow)
 
     def validate_all_filters():
         price.validate(*price_range)
         year_filter.validate(*year_range)
         region_filter.validate(selected_regions)
         km_filter.validate(*km_range)
-        #emirates_filter.validate()
+        emirates_filter.validate()
 
     paginator.validate_all_pages(
         validate_filters_fn=validate_all_filters,

@@ -22,10 +22,6 @@ class PriceFilter(BasePage):
 
 
     def validate(self, min_val=None, max_val=None):
-        """
-        Validate that all visible prices fall within the expected range.
-        If a range is not provided, fall back to the most recently applied one.
-        """
         if min_val is None or max_val is None:
             assert hasattr(self, "_active_range"), "No active price range to validate."
             min_val, max_val = self._active_range

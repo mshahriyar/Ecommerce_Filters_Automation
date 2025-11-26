@@ -1,12 +1,14 @@
+import pytest
 from pages.base_page import BasePage
-from playwright.sync_api import TimeoutError
-
+from playwright.sync_api import expect
+from components.fascination import FascinationCarousel
 
 class PaginationValidator(BasePage):
 
     NEXT_BTN = "//button[@data-testid='pagination-next-button']"
     RESULT_CARD = "//div[@id='ad-cars-card']"
-
+    NO_RESLUTTS_MSG = "//*[text() ='Sorry! No result found :(']"
+    ITEMS = "//div[contains(@class,'overflow-x-auto')]//button"
     def wait_for_results(self):
         """
         Wait for result cards to appear to avoid validating empty or loading state.
@@ -17,11 +19,18 @@ class PaginationValidator(BasePage):
 
 
     def validate_all_pages(self, validate_filters_fn, validate_fascination_fn=None, max_pages=3):
-        for page_no in range(1, max_pages + 1):
+        items = self.page.locator(self.ITEMS)
+        no_result = self.page.locator(self.NO_RESLUTTS_MSG)
+        next_btn = self.page.locator(self.NEXT_BTN)
 
+        for page_no in range(1, max_pages + 1):            
             print(f"\n===== VALIDATING PAGE {page_no} =====")
+            if items.count() > 0:
+                expect(no_result).not_to_be_visible(timeout=2000)
 
-            # 1. Make sure results are loaded
+            else:
+                expect(no_result).to_be_visible(timeout=3000)
+                pytest.skip("⏭ Skipped: No results found for the applied filters.")
             self.wait_for_results()
 
             # 2. Validate filters
@@ -31,8 +40,6 @@ class PaginationValidator(BasePage):
             if validate_fascination_fn:
                 validate_fascination_fn()
 
-            # 4. Try to go to next page
-            next_btn = self.page.locator(self.NEXT_BTN)
 
             # If next button is not visible → stop
             if not next_btn.is_visible():
