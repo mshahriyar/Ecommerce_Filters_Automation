@@ -9,10 +9,8 @@ class PaginationValidator(BasePage):
     RESULT_CARD = "//div[@id='ad-cars-card']"
     NO_RESLUTTS_MSG = "//*[text() ='Sorry! No result found :(']"
     ITEMS = "//div[contains(@class,'overflow-x-auto')]//button"
+
     def wait_for_results(self):
-        """
-        Wait for result cards to appear to avoid validating empty or loading state.
-        """
         cards = self.page.locator(self.RESULT_CARD)
         cards.first.wait_for(state="visible", timeout=15000)
         self.page.wait_for_timeout(300)
@@ -33,15 +31,11 @@ class PaginationValidator(BasePage):
                 pytest.skip("⏭ Skipped: No results found for the applied filters.")
             self.wait_for_results()
 
-            # 2. Validate filters
             validate_filters_fn()
 
-            # 3. Validate fascination if provided
             if validate_fascination_fn:
                 validate_fascination_fn()
 
-
-            # If next button is not visible → stop
             if not next_btn.is_visible():
                 print("🚫 No next page. Pagination finished.")
                 break

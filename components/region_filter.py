@@ -34,14 +34,12 @@ class RegionalFilter(BasePage):
             if re.search(pattern, text, re.IGNORECASE):
                 matched.append(text)
             else:
-                # Skip non-region fields (year, mileage, auto, etc.)
                 continue
  
         assert len(matched) > 0, (
             f"❌ No region info found in the results!\nAllowed: {allowed}"
         )
     
-        # Make sure each matched region belongs to allowed list
         for found in matched:
             assert any(reg.lower() in found.lower() for reg in allowed), \
                 f"❌ Invalid region '{found}' not in allowed list {allowed}"

@@ -22,10 +22,7 @@ def test_filters(page, cars_page):
     year_range = year_filter.apply(2014, 2022)
     km_range = km_filter.apply(5000, 100000)
     emirates_filter.apply()
-    cars_page.wait_for_timeout(2000)   # allow UI filters to settle
-
-    # fascination_flow = fascination.auto_fascination_flow()
-    # print("\n🔎 Fascination Flow Selected:", fascination_flow)
+    cars_page.wait_for_timeout(2000)  
 
     def validate_all_filters():
         price.validate(*price_range)

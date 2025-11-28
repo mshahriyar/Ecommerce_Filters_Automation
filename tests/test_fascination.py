@@ -18,9 +18,6 @@ def test_fascination_flow(cars_page):
 
     selected_model = fascination.click_first()
 
-    # ---------------------------
-    # LEVEL 3 → YEAR SELECTION
-    # ---------------------------
     print("\n--- Level 3: Validate Years ---")
     year_labels = fascination.validate_visible()
 

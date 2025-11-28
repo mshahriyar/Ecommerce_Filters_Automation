@@ -7,7 +7,6 @@ class KilomterFilter(BasePage):
     FROM_INPUT = "//span[normalize-space()='From']/parent::div/input"
     TO_INPUT = "//span[normalize-space()='To']/parent::div/input"
     APPLY_BTN = "(//*[@data-testid='button-show-results'])[1]"
-    # Target the mileage value that contains "km" instead of excluding it.
     KM_VALUES = "//div[@id='ad-cars-card-more-details']//p[contains(text(),'km')]"
 
     def apply(self, min_km, max_km):
@@ -22,9 +21,6 @@ class KilomterFilter(BasePage):
         return self._active_range
 
     def validate(self, min_km=None, max_km=None):
-        if min_km is None or max_km is None:
-            assert hasattr(self, "_active_range"), "No active kilometer range to validate."
-            min_km, max_km = self._active_range
 
         kilometer_locator = self.page.locator(self.KM_VALUES)
         kilometer_locator.first.wait_for(state="visible", timeout=15000)

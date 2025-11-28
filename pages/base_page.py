@@ -20,5 +20,4 @@ class BasePage:
         cards = self.page.locator("//div[@id='ad-cars-card']")
         cards.first.wait_for(state="visible", timeout=15000)
 
-        # Ensure dynamic sections load (details, price, km, etc.)
         self.page.wait_for_timeout(500)

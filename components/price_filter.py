@@ -10,7 +10,6 @@ class PriceFilter(BasePage):
     PRICE_VALUES = "//div[@id='ad-cars-card-price-info']//p[not(contains(text(), 'AED'))]"
 
     def apply(self, min_price, max_price):
-        """Apply the price filter and store the active range for later validation."""
         self.click(self.FILTER_BTN)
         self.fill(self.FROM_INPUT, min_price)
         self.fill(self.TO_INPUT, max_price)
