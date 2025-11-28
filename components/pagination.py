@@ -1,7 +1,6 @@
 import pytest
 from pages.base_page import BasePage
 from playwright.sync_api import expect
-from components.fascination import FascinationCarousel
 
 class PaginationValidator(BasePage):
 

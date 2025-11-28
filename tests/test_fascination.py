@@ -10,19 +10,17 @@ def test_fascination_flow(cars_page):
     make_labels = fascination.validate_visible()
     assert len(make_labels) > 0, "❌ No Make list shown"
     selected_make = fascination.click_first()
+    cars_page.wait_for_timeout(3000)
 
     print("\n--- Level 2: Validate Models ---")
     model_labels = fascination.validate_visible()
-
     assert len(model_labels) > 0, "❌ No model list shown after selecting a Make!"
-
     selected_model = fascination.click_first()
-
+    cars_page.wait_for_timeout(3000)
+    
     print("\n--- Level 3: Validate Years ---")
     year_labels = fascination.validate_visible()
-
     assert len(year_labels) > 0, "❌ No year list shown after selecting a Model!"
-
     selected_year = fascination.click_first()
 
     print("\n🎉 Fascination flow completed successfully!")

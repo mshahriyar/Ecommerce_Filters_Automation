@@ -5,7 +5,7 @@ from components.year_filter import YearFilter
 from components.region_filter import RegionalFilter
 from components.emirates_filter import EmiratesFilter
 from components.pagination import PaginationValidator
-
+from components.sorting import Sorting
 
 def test_filters(page, cars_page):
     price = PriceFilter(cars_page)
@@ -15,6 +15,7 @@ def test_filters(page, cars_page):
     emirates_filter = EmiratesFilter(cars_page)
     fascination = FascinationCarousel(cars_page)
     paginator = PaginationValidator(cars_page)
+    sort = Sorting(cars_page)
 
     # Apply filters once before traversing pages
     price_range = price.apply(100, 200000)
@@ -22,6 +23,7 @@ def test_filters(page, cars_page):
     year_range = year_filter.apply(2014, 2022)
     km_range = km_filter.apply(5000, 100000)
     emirates_filter.apply()
+
     cars_page.wait_for_timeout(2000)  
 
     def validate_all_filters():
@@ -36,3 +38,5 @@ def test_filters(page, cars_page):
         validate_fascination_fn=fascination.validate_fascination,
         max_pages=3,
     )
+
+  
