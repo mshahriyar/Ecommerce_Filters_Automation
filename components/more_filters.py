@@ -53,16 +53,15 @@ class MoreFilters(BasePage):
     INSURED_LABEL = "[data-testid='ad-overview-label-insured']"
     INSURED_VALUE = "[data-testid='ad-overview-value-insured']"
 
- 
 
-    # HORSEPOWER_DROPDOWN = "//*[text()='Horsepower']"
-    # SELECT_HORSEPOWER = "//label/span[text()='{}']"
+    HORSEPOWER_DROPDOWN = "//*[text()='Horsepower']"
+    SELECT_HORSEPOWER = "//label/span[text()='{}']"
 
-    # CYLINDER_DROPDOWN = "//*[text()='No. of Cylinders']"
-    # SELECT_CYLINDER = "//label/span[text()='{}']"
+    CYLINDER_DROPDOWN = "//*[text()='No. of Cylinders']"
+    SELECT_CYLINDER = "//label/span[text()='{}']"
 
-    # INTERIOR_COLOR_DROPDOWN = "//*[text()='Interior Colors']"
-    # SELECT_INTERIOR_COLOR = "//label/span[text()='{}']"
+    INTERIOR_COLOR_DROPDOWN = "//*[text()='Interior Colors']"
+    SELECT_INTERIOR_COLOR = "//label/span[text()='{}']"
 
     MAKE_DROPDOWN = "//*[text() ='Make']"
     SELECT_MAKE = "//label/span[text()='AUDI']"
@@ -86,8 +85,8 @@ class MoreFilters(BasePage):
     SELECT_STEERING_SIDE = "//*[text()='Left Hand']"
     SELECT_WARRANTY = "//*[text()='No']"
     SELECT_NO_OF_DOORS = "//*[text()='4 Doors']"
-    # SELECT_BODY_CONDITION = "//*[text()='Excellent']"
-    # SELECT_NO_OF_SEATS = "//*[text()='4 Seats']"
+    SELECT_BODY_CONDITION = "//*[text()='Excellent']"
+    SELECT_NO_OF_SEATS = "//*[text()='4 Seats']"
 
     SAVE_BTN = "//button[text()='Save']"
     MORE_FILTERS_BTN = "//span[text() ='More Filters']"
@@ -99,7 +98,7 @@ class MoreFilters(BasePage):
 
 
     def apply_dropdown_filter(self, dropdown, search_value, option_locator):
-        """Dropdown filters using search box."""
+
         self.click(self.MORE_FILTERS_BTN)
         self.click(dropdown)
         self.fill(self.SEARCH_OPTION, search_value)
@@ -107,7 +106,7 @@ class MoreFilters(BasePage):
         self.click(self.SAVE_BTN)
 
     def apply_direct_filter(self, option_locator):
-        """Filters that are not dropdowns (chips/buttons)."""
+
         self.click(self.MORE_FILTERS_BTN)
         self.click(option_locator)
         self.click(self.SAVE_BTN)
@@ -162,7 +161,6 @@ class MoreFilters(BasePage):
         card.wait_for(state="visible", timeout=15000)
         card.click(force=True)
         self.page.wait_for_load_state("domcontentloaded")
-        
 
 
     def validate_overview_details(self, expected):
