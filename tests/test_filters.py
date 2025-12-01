@@ -6,6 +6,7 @@ from components.region_filter import RegionalFilter
 from components.emirates_filter import EmiratesFilter
 from components.pagination import PaginationValidator
 from components.sorting import Sorting
+from components.type_of_seller import TypeOfSeller
 
 def test_filters(page, cars_page):
     price = PriceFilter(cars_page)
@@ -15,7 +16,12 @@ def test_filters(page, cars_page):
     emirates_filter = EmiratesFilter(cars_page)
     fascination = FascinationCarousel(cars_page)
     paginator = PaginationValidator(cars_page)
-    sort = Sorting(cars_page)
+    sort_by = Sorting(cars_page)
+    # seller_type = TypeOfSeller(cars_page)
+    # seller_type.select_seller_type("Dealer")
+    # seller_type.validate_seller_type("Dealer")
+    # seller_type.select_seller_type("Owner")
+    # seller_type.validate_seller_type("Owner")
 
     # Apply filters once before traversing pages
     price_range = price.apply(100, 200000)

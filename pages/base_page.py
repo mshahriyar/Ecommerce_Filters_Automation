@@ -19,4 +19,4 @@ class BasePage:
     def wait_for_results(self):
         cards = self.page.locator("//div[@id='ad-cars-card']")
         cards.first.wait_for(state="visible", timeout=15000)
-        self.page.wait_for_timeout(3000)
+        self.page.wait_for_timeout(4000)

@@ -13,4 +13,4 @@ class LoginPage(BasePage):
         self.fill(self.EMAIL, email)
         self.fill(self.PASSWORD, password)
         self.click(self.SUBMIT_BTN)
-        self.wait_for_url("https://portal-v2.qa.ayshei.io/uae/ads")
+        self.wait_for_url("https://ayshei.com/uae/ads")
