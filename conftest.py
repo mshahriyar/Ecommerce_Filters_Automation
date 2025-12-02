@@ -1,8 +1,6 @@
 import sys, os
 from pathlib import Path
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 import pytest
 from playwright.sync_api import sync_playwright
 from config.config import load_config

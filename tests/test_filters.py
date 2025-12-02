@@ -17,13 +17,9 @@ def test_filters(page, cars_page):
     fascination = FascinationCarousel(cars_page)
     paginator = PaginationValidator(cars_page)
     sort_by = Sorting(cars_page)
-    # seller_type = TypeOfSeller(cars_page)
-    # seller_type.select_seller_type("Dealer")
-    # seller_type.validate_seller_type("Dealer")
-    # seller_type.select_seller_type("Owner")
-    # seller_type.validate_seller_type("Owner")
+    seller_type = TypeOfSeller(cars_page)
 
-    # Apply filters once before traversing pages
+    print("\n--- Applying Multiple Filters ---")
     price_range = price.apply(100, 200000)
     selected_regions = region_filter.apply(["American", "GCC"])
     year_range = year_filter.apply(2014, 2022)
@@ -45,4 +41,7 @@ def test_filters(page, cars_page):
         max_pages=3,
     )
 
-  
+    seller_type.select_seller_type("Dealer")
+    seller_type.validate_seller_type("Dealer")
+    seller_type.select_seller_type("Owner")
+    seller_type.validate_seller_type("Owner")

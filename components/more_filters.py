@@ -47,33 +47,39 @@ class MoreFilters(BasePage):
     NO_OF_CYLINDERS_LABEL = "[data-testid='ad-overview-label-no-of-cylinders']"
     NO_OF_CYLINDERS_VALUE = "[data-testid='ad-overview-value-no-of-cylinders']"
 
-    NO_OF_SEATS_LABEL = "[data-testid='ad-overview-label-no-of-seats']"
-    NO_OF_SEATS_VALUE = "[data-testid='ad-overview-value-no-of-seats']"
+    NO_OF_SEATS_LABEL = "[data-testid='ad-overview-label-no.-of-seats']"
+    NO_OF_SEATS_VALUE = "[data-testid='ad-overview-value-no.-of-seats']"
 
     INSURED_LABEL = "[data-testid='ad-overview-label-insured']"
     INSURED_VALUE = "[data-testid='ad-overview-value-insured']"
 
+    ADD_ONS_LABEL = "//h3[text() = 'Add-ons']"  
+    ADD_ONS_VALUE = "//h3[text() = 'Add-ons']/following-sibling::div"
+
 
     HORSEPOWER_DROPDOWN = "//*[text()='Horsepower']"
-    SELECT_HORSEPOWER = "//label/span[text()='{}']"
+    SELECT_HORSEPOWER = "//label//span[text()='200 - 300 HP']"
 
     CYLINDER_DROPDOWN = "//*[text()='No. of Cylinders']"
-    SELECT_CYLINDER = "//label/span[text()='{}']"
+    SELECT_CYLINDER = "//label//span[text()='4']"
 
     INTERIOR_COLOR_DROPDOWN = "//*[text()='Interior Colors']"
-    SELECT_INTERIOR_COLOR = "//label/span[text()='{}']"
+    SELECT_INTERIOR_COLOR = "//label//span[text()='White']"
 
     MAKE_DROPDOWN = "//*[text() ='Make']"
     SELECT_MAKE = "//label/span[text()='AUDI']"
 
     MODEL_DROPDOWN = "//*[text() ='Model']"
-    SELECT_MODEL = "//label/span[text()='A6']"
+    SELECT_MODEL = "//label//span[text()='A6']"
 
     TRIM_DROPDOWN = "//*[text()='Trim']"
-    SELECT_TRIM = "//label/span[text()='40 TFSI']"
+    SELECT_TRIM = "//label//span[text()='40 TFSI']"
 
     BODY_TYPE_DROPDOWN = "//*[text()='Body Type']"
-    SELECT_BODY_TYPE = "//label/span[text()='Sedan']"
+    SELECT_BODY_TYPE = "//label//span[text()='Sedan']"
+
+    ADD_ONS_DROPDOWN = "//*[text()='Add-ons']"
+    SELECT_ADD_ONS = "//label//span[text()='Climate Control']"
 
 
     SELECT_FUEL_TYPE = "//*[text()='Gasoline']"
@@ -83,10 +89,11 @@ class MoreFilters(BasePage):
     SELECT_EXTERIOR_COLORS = "//label//span[text()='Black']"
 
     SELECT_STEERING_SIDE = "//*[text()='Left Hand']"
-    SELECT_WARRANTY = "//*[text()='No']"
+    SELECT_WARRANTY = "//*[text()='Yes']"
     SELECT_NO_OF_DOORS = "//*[text()='4 Doors']"
     SELECT_BODY_CONDITION = "//*[text()='Excellent']"
     SELECT_NO_OF_SEATS = "//*[text()='4 Seats']"
+
 
     SAVE_BTN = "//button[text()='Save']"
     MORE_FILTERS_BTN = "//span[text() ='More Filters']"
@@ -136,6 +143,23 @@ class MoreFilters(BasePage):
         self.click(self.SELECT_BODY_TYPE)
         self.click(self.SAVE_BTN)
 
+        self.click(self.HORSEPOWER_DROPDOWN)
+        self.click(self.SELECT_HORSEPOWER)
+        self.click(self.SAVE_BTN)
+
+        self.click(self.CYLINDER_DROPDOWN)
+        self.click(self.SELECT_CYLINDER)
+        self.click(self.SAVE_BTN)
+
+        self.click(self.INTERIOR_COLOR_DROPDOWN)
+        self.click(self.SELECT_INTERIOR_COLOR)
+        self.click(self.SAVE_BTN)
+
+        self.click(self.ADD_ONS_DROPDOWN)
+        self.click(self.SELECT_ADD_ONS)
+        self.click(self.SAVE_BTN)
+
+
         self.click(self.SELECT_FUEL_TYPE)
 
         self.click(self.SELECT_AUTOMATIC_TRANSMISSION)
@@ -147,9 +171,9 @@ class MoreFilters(BasePage):
 
         self.click(self.SELECT_STEERING_SIDE)
 
-        # self.click(self.SELECT_WARRANTY)
+        self.click(self.SELECT_WARRANTY)
 
-        # self.click(self.SELECT_NO_OF_DOORS)
+        self.click(self.SELECT_NO_OF_DOORS)
 
         # DONE → APPLY FILTERS
         self.click(self.SHOW_RESULTS)
@@ -185,6 +209,7 @@ class MoreFilters(BasePage):
             "No. of Cylinders": (self.NO_OF_CYLINDERS_LABEL, self.NO_OF_CYLINDERS_VALUE, expected["cylinders"]),
             "No. of Seats": (self.NO_OF_SEATS_LABEL, self.NO_OF_SEATS_VALUE, expected["seats"]),
             "Insured": (self.INSURED_LABEL, self.INSURED_VALUE, expected["insured"]),
+            "Add-ons": (self.ADD_ONS_LABEL, self.ADD_ONS_VALUE, expected["add_ons"])
         }
 
         for label_name, (label_sel, value_sel, expected_val) in checks.items():

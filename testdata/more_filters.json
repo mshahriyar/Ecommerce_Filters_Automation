@@ -1,0 +1,25 @@
+[
+  {
+    "make": "AUDI",
+    "model": "A6",
+    "trim": "40 TFSI",
+    "year": "2020",
+    "kilometers": "15000",
+    "regional_spec": "GCC",
+    "body_type": "Sedan",
+    "fuel_type": "Gasoline",
+    "transmission": "Automatic",
+    "exterior_color": "Black",
+    "steering_side": "Left Hand",
+    "warranty": "Yes",
+    "doors": "4 Door",
+    "interior_color": "White",
+    "body_condition": "Excellent",
+    "cylinders": "4",
+    "horesepower": "200-300 HP",
+    "seats": "4 Seat",
+    "insured": "Yes",
+    "accident_history":"No",
+    "add_ons": "Climate Control"
+  }
+]
