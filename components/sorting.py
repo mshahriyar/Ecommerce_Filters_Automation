@@ -5,7 +5,6 @@ import re
 class Sorting(BasePage):
 
     SORT_BTN = "//div[contains(@class, 'border-stroke')]/following-sibling::div//span[text() = 'Sort by']"
-    #SORT_OPTION = "//p[text() = 'Price: Low to High']"
     PRICE_VALUES = "//div[@id='ad-cars-card-price-info']//p[not(contains(text(), 'AED'))]"
     KM_VALUES = "//div[@id='ad-cars-card-more-details']//p[contains(text(),'km')]"
     YEARS_VALUES = "//div[@id='ad-cars-card-more-details']//p"
@@ -65,7 +64,6 @@ class Sorting(BasePage):
         for i in range(total):
             text = details.nth(i).inner_text().strip()
 
-            # 👉 Find ANY 4-digit number
             match = re.search(r"\b(19|20)\d{2}\b", text)
             if not match:
                 continue

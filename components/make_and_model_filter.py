@@ -69,4 +69,3 @@ class MakeAndModelFilter(BasePage):
 
         assert validated > 0, f"❌ No valid cards matched '{make} {model}'."
         
-        print(f"✅ All {validated} validated results match Make: '{make}' and Model: '{model}'.")

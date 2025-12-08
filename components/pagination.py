@@ -47,7 +47,7 @@ class PaginationValidator(BasePage):
 
             self.wait_for_results()
 
-        print("\n🎉 Pagination Validation Complete\n")
+
 
 
 

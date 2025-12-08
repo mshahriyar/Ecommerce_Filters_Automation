@@ -27,9 +27,6 @@ class FascinationCarousel(BasePage):
             text = el.inner_text().strip()
             assert el.is_visible(), f"❌ Fascination item '{text}' is NOT visible!"
 
-        
-        print(f"✅ Fascination items visible: {count}")
-
 
     def get_items(self):
         items = self.page.locator(self.ITEMS)
@@ -46,12 +43,10 @@ class FascinationCarousel(BasePage):
 
     def validate_visible(self):
         items, labels = self.get_items()
-        print(f"✨ Fascination options found: {labels}")
         return labels
 
     def click_first(self):
         items, labels = self.get_items()
-        print(f"👉 Clicking fascination: {labels[0]}")
         items.first.click()
         self.page.wait_for_timeout(600)
         return labels[0]

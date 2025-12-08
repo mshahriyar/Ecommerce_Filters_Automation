@@ -32,5 +32,4 @@ class KilomterFilter(BasePage):
             km = int(re.sub(r"[^\d]", "", text))
             assert min_km <= km <= max_km, f"❌ {km} is outside range"
 
-        print(f"✅ All Kilometers are within {min_km} – {max_km} KM")
 

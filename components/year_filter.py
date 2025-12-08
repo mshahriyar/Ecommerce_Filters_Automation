@@ -35,6 +35,4 @@ class YearFilter(BasePage):
                 years.append(year)
 
         assert years, "❌ No valid year found!"
-
-        print(f"✅ All years are within {min_year} – {max_year}")
         return years

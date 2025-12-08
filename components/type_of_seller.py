@@ -29,7 +29,6 @@ class TypeOfSeller(BasePage):
         for i in range(total):
             card = cards.nth(i)
 
-            # Look for avatar INSIDE THIS CARD, not globally
             avatar = card.locator("//span//img[@alt = 'user avatar']")
 
             avatar_present = avatar.count() > 0 and avatar.is_visible()
@@ -39,4 +38,3 @@ class TypeOfSeller(BasePage):
             if seller_type == "Owner":
                 assert not avatar_present, f"❌ Card #{i+1} is NOT Owner"
 
-        print(f"✅ All {total} results belong to: {seller_type}")

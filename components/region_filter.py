@@ -43,6 +43,6 @@ class RegionalFilter(BasePage):
         for found in matched:
             assert any(reg.lower() in found.lower() for reg in allowed), \
                 f"❌ Invalid region '{found}' not in allowed list {allowed}"
-        print(f"✅ All validated regions are within allowed: {allowed}")
+
 
     

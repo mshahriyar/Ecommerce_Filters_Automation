@@ -16,17 +16,27 @@ def pytest_addoption(parser):
 def config(pytestconfig):
     env = pytestconfig.getoption("env")
     return load_config(env)
+@pytest.fixture(scope="session")
+def browser():
+    with sync_playwright() as pw:
 
+        browser = pw.chromium.launch(headless=False)
+        yield browser
+
+        browser.close() 
 
 @pytest.fixture(scope="function")
-def context():
-    with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=False)   
-        context = browser.new_context()
-        yield context
-        context.close()
-        browser.close()
+def context(browser):
 
+    context = browser.new_context(
+        http_credentials={
+            "username": "ayshei",
+            "password": "password123"
+        }
+    )
+
+    yield context
+    context.close()
 
 @pytest.fixture(scope="function")
 def page(context):

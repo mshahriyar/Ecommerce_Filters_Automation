@@ -12,22 +12,22 @@ class EmiratesFilter(BasePage):
         self.click(self.FILTER_BTN)
         self.click(self.SELECT_EMIRATE)
         self.click(self.APPLY_BTN)
-        self.wait_for_results() 
+        self.wait_for_results()
         return emirate
 
 
     def validate(self):
+        
+        self.page.locator("//div[@id='ad-cars-card']").first.wait_for(state="visible", timeout=15000)
         location = self.page.locator(self.CITY)
-        location.first.wait_for(state="visible", timeout=15000)
-
         count = location.count()
 
         assert count > 0, "❌ No results found!"
 
         for i in range(count):
-            text = location.nth(i).inner_text()
+            text = location.nth(i).inner_text(timeout=2000).strip()
+
             assert "Dubai" in text, f"❌ {text} is outside Dubai"
 
 
-        print(f"✅ All locations are within Dubai")
 

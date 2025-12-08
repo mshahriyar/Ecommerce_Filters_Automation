@@ -175,7 +175,6 @@ class MoreFilters(BasePage):
 
         self.click(self.SELECT_NO_OF_DOORS)
 
-        # DONE → APPLY FILTERS
         self.click(self.SHOW_RESULTS)
         self.wait_for_results()
 
@@ -218,12 +217,13 @@ class MoreFilters(BasePage):
             value_loc = self.page.locator(value_sel)
 
             if label_loc.count() == 0:
-                print(f"⚠️ Skipping missing label {label_name}")
-                continue
+                raise AssertionError(f"❌ Missing label: '{label_name}' — expected to find locator: {label_sel}")
+
+            if value_loc.count() == 0:
+                raise AssertionError(f"❌ Missing value for '{label_name}' — expected locator: {value_sel}")
 
             actual_value = value_loc.inner_text().strip()
 
             assert expected_val.lower() in actual_value.lower(), \
                 f"❌ {label_name} mismatch — expected: {expected_val}, found: {actual_value}"
 
-            print(f"✅ {label_name}: {actual_value}")

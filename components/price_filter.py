@@ -35,5 +35,3 @@ class PriceFilter(BasePage):
             text = prices_locator.nth(i).inner_text()
             price = int(re.sub(r"[^\d]", "", text))
             assert min_val <= price <= max_val, f"❌ {price} is outside range"
-
-        print(f"✅ All prices are within {min_val} – {max_val} AED")
