@@ -28,7 +28,7 @@ def test_(payment_page):
     
 
 
-# @pytest.mark.address
-# def test_delete_payment(payment_page):
-#     payment_page.delete_payment()
-#     print('✅ Payment method deleted successfully!')
+@pytest.mark.address
+def test_delete_payment(payment_page):
+    payment_page.delete_payment()
+    print('✅ Payment method deleted successfully!')

@@ -1,49 +1,4 @@
-# from profile.address_page import AddressPage
-# from pages.base_page import BasePage
-# import pytest
 
-# @pytest.mark.address
-# def test_add_new_address(page, logged_in_page):
-#     address_page = AddressPage(logged_in_page)
-#     address_page.go_to_address_page()
-#     address_page.open_address_form()
-#     address_page.fill_address_form(
-#         first_name="John",
-#         last_name="Doe",
-#         mobile_number="0501234567",
-#         emirate="Abu Dhabi",
-#         area="Downtown",
-#         street="Main St",
-#         building="Building A",
-#         apt_villa_no="101",
-#         landmark="Near Mall"
-#     )
-#     address_page.save_address()
-#     address_page.verify_success_popup_and_close()
-
-# @pytest.mark.address
-# def test_edit_address(page, logged_in_page):
-#     address_page = AddressPage(logged_in_page)
-#     address_page.go_to_address_page()
-#     address_page.edit_address()
-#     address_page.fill_address_form(
-#         first_name="Jane Nove",
-#         last_name="Doe",
-#         mobile_number="0507654321",
-#         emirate="Dubai",
-#         area="Uptown",
-#         street="Second St",
-#         building="Building B",
-#         apt_villa_no="202",
-#         landmark="Near Park"
-#     )
-#     address_page.save_address()
-#     address_page.edit_address_success_popup_and_close()
-
-# def test_delete_address(page, logged_in_page):
-#     address_page = AddressPage(logged_in_page)
-#     address_page.go_to_address_page()
-#     address_page.delete_address()
 
 import pytest
 from profile.address_page import AddressPage
