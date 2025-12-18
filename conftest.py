@@ -43,6 +43,12 @@ def page(context):
     page = context.new_page()
     return page
 
+@pytest.fixture(scope="function")
+def logged_in_page(page, config):
+    login = LoginPage(page)
+    login.open(config["base_url"])
+    login.login(config["email"], config["password"])
+    return page
 
 @pytest.fixture(scope="function")
 def cars_page(page, config):
