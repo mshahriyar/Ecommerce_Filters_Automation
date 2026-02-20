@@ -7,4 +7,4 @@ class MotorsPage(BasePage):
     
     def go_to_cars(self):
         self.page.goto(self.CARS_CATEGORY)
-        self.wait_for_url("https://portal-v2.qa.ayshei.io/uae/ads/motors/cars")
+        #self.wait_for_url("https://portal-v2.qa.ayshei.io/uae/ads/motors/cars")

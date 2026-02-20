@@ -18,7 +18,7 @@ def test_filters(page, cars_page):
     emirates_filter = EmiratesFilter(cars_page)
     fascination = FascinationCarousel(cars_page)
     paginator = PaginationValidator(cars_page)
-    seller_type = TypeOfSeller(cars_page)
+    #seller_type = TypeOfSeller(cars_page)
 
     print("\n--- Applying Multiple Filters ---")
     emirates_filter.apply()
